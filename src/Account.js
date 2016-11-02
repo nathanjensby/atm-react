@@ -14,14 +14,18 @@ export default class Account extends Component {
     this.setState({
       balance: newAmount
     })
+    this.refs.amt.value = "";
   }
 
   _handleWithdrawal() {
     let amount = this.refs.amt.value;
     let newAmount = parseInt(this.state.balance, 10) - parseInt(amount, 10);
-    this.setState({
-      balance: newAmount
-    })
+    if (newAmount >= 0){
+      this.setState({
+        balance: newAmount
+      })
+    }
+    this.refs.amt.value = "";
   }
 
   render() {
