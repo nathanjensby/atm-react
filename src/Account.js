@@ -4,7 +4,7 @@ export default class Account extends Component {
   constructor() {
     super();
     this.state = {
-      balance:0
+      balance:0,
     }
   }
 
@@ -22,17 +22,19 @@ export default class Account extends Component {
     let newAmount = parseInt(this.state.balance, 10) - parseInt(amount, 10);
     if (newAmount >= 0){
       this.setState({
-        balance: newAmount
+        balance: newAmount,
       })
     }
+
     this.refs.amt.value = "";
   }
+
 
   render() {
     return (
       <div className="account">
         <h2>{this.props.name}</h2>
-        <div className="balance">$0</div>
+        <div ref="balance" className={this.state.className} >${this.state.balance}</div>
         <input type="text" placeholder="enter an amount" ref="amt"/>
         <input type="button" value="Deposit" ref="deposit" onClick={this._handleDeposit.bind(this)}/>
         <input type="button" value="Withdraw" ref="withdraw" onClick={this._handleWithdrawal.bind(this)}/>
