@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 
 export default class Account extends Component {
+  constructor() {
+    super();
+    this.state = {
+      balance:0
+    }
+  }
   render() {
     return (
       <div className="account">
